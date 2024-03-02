@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Confirmation</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #3498db;
+    }
+    p {
+      color: #555555;
+      line-height: 1.6;
+    }
+    .verification-code {
+      background-color: #2ecc71;
+      color: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 20px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .company-info {
+      margin-top: 30px;
+      text-align: center;
+      color: #888888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dear <%= user.name %>,</h1>
+    <p>Thank you for registering with our platform. We are thrilled to have you on board!</p>
+    <p>Your registration is almost complete. Please use the following verification code to activate your account:</p>
+    <div class="verification-code"><%= activationCode %></div>
+    <p>If you did not register for our platform, please disregard this email.</p>
+    <p>Thank you again for choosing us!</p>
+    <p class="company-info">Best regards,<br>Your Company Name</p>
+  </div>
+</body>
+</html>
