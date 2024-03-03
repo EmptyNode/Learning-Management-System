@@ -3,7 +3,7 @@ import ejs from 'ejs';
 import path from 'path';
 
 interface EmailOptions{
-    email: string;
+    email: string; 
     subject: string;
     template: string;
     data: {[key: string]: any};
