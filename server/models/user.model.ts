@@ -77,12 +77,12 @@ userSchema.pre<IUser>("save", async function(next) {
 
 // sign access token
 userSchema.methods.SignAccessToken = function() {
-    return jwt.sign({id: this._id}, process.env.ACCESS_TOKEN || '', {expiresIn: process.env.ACCESS_TOKEN_EXPIRE});
+    return jwt.sign({id: this._id}, process.env.ACCESS_TOKEN || '');
 }
 
 // sign refresh token
 userSchema.methods.SignRefreshToken = function() {
-    return jwt.sign({id: this._id}, process.env.REFRESH_TOKEN || '', {expiresIn: process.env.REFRESH_TOKEN_EXPIRE});
+    return jwt.sign({id: this._id}, process.env.REFRESH_TOKEN || '');
 }
 
 //comapre passsword
