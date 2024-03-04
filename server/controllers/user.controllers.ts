@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import userModel, { IUser } from "../models/user.model";
 import ErrorHandler from "../utils/ErrorHandler";
 import { CatchAsyncError } from "../middleware/catchAsyncErrors";
-import jwt, { Secret } from "jsonwebtoken";
+import jwt, { JwtPayload, Secret } from "jsonwebtoken";
 require("dotenv").config();
 import ejs from "ejs";
 import path from "path";
@@ -196,3 +196,31 @@ export const logoutUser = CatchAsyncError(
     }
   }
 );
+
+
+//update access token
+export const updateAccessToken = CatchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    try{
+      const refresh_token = req.cookies.refresh_token as string;
+      const decoded = jwt.verify(refresh_token, process.env.REFRESH_TOKEN as string) as JwtPayload;
+
+      const message = 'could not refresh token';
+      if(!decoded){
+        return next(new ErrorHandler(message, 401));
+      }
+
+      console.log(decoded);
+      const session = await redis.get(decoded.id as string);
+
+      if(!session){
+        return next(new ErrorHandler(message, 401));
+      }
+
+      const user = JSON.parse(session);
+
+      const accessToken = jwt.sign({id: user._id}, process.env.ACCESS_TOKEN as string, {expiresIn: "5m"});
+
+      const refreshToken = jwt.sign({id: user._id}, process.env.REFRESH_TOKEN as string, {expiresIn: "3d"});
+      res.cookie("access_token", accessToken, {maxAge: 300000, httpOnly: true, sameSite: "lax"});
+    }

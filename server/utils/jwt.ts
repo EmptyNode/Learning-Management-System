@@ -32,15 +32,15 @@ export const sendToken = (user: IUser, statusCode: number, res: Response) => {
 
   //options for cookies
   const accessTokenOptions: ITokenOptions = {
-    express: new Date(Date.now() + accessTokenExpire * 1000),
-    maxAge: accessTokenExpire * 1000,
+    express: new Date(Date.now() + accessTokenExpire * 60 * 60 * 1000),
+    maxAge: accessTokenExpire * 60 * 60 *1000,
     httpOnly: true,
     sameSite: "lax",
   };
 
   const refreshTokenOptions: ITokenOptions = {
-    express: new Date(Date.now() + refreshTokenExpire * 1000),
-    maxAge: refreshTokenExpire * 1000,
+    express: new Date(Date.now() + refreshTokenExpire * 24 * 60 * 60 * 1000),
+    maxAge: refreshTokenExpire * 24 * 60 * 60 *1000,
     httpOnly: true,
     sameSite: "lax",
   };
