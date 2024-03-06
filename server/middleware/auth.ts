@@ -9,19 +9,26 @@ import { redis } from "../utils/redis";
 export const isAuthenticated = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     const access_token = req.cookies.access_token;
+    console.log(access_token)
     
     if (!access_token) {
       return next(new ErrorHandler("Login first to access this resource", 401));
     }
+    console.log("hi")
 
+    console.log(process.env.ACCESS_TOKEN as string);
+    
     const decoded = jwt.verify(
       access_token,
       process.env.ACCESS_TOKEN as string
     ) as JwtPayload;
+    console.log("hi")
+    
 
     if (!decoded) {
       return next(new ErrorHandler("Access token is not valid", 401));
     }
+
 
     const user = await redis.get(decoded.id);
 
