@@ -223,7 +223,7 @@ export const updateAccessToken = CatchAsyncError(
       const accessToken = jwt.sign(
         { id: user._id },
         process.env.ACCESS_TOKEN as string,
-        { expiresIn: "10s" }
+        { expiresIn: "5m" }
       );
 
       const refreshToken = jwt.sign(
