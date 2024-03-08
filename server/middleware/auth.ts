@@ -45,6 +45,9 @@ export const isAuthenticated = CatchAsyncError(
 //valid user roles 
 export const authorizeRoles = (...roles: string[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
+    console.log(req.user?.role)
+    console.log(roles)
+
     if (!roles.includes(req.user?.role || '')) {
       return next(
         new ErrorHandler(
