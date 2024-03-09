@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+    }
+
+    .order-details {
+      margin-top: 20px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Order Confirmation</h2>
+    <div class="order-details">
+      <p><strong>Order ID:</strong> <%= order._id %></p>
+      <p><strong>Order Date:</strong> <%= order.date %></p>
+      <p><strong>Customer Name:</strong> <%= order.name %></p>
+    </div>
+
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <p><strong>Subtotal:</strong> <%= order.price %></p>
+      <p><strong>Total:</strong> <%= order.price %></p>
+    </div>
+
+    <p>Thank you for shopping with us. If you have any questions or concerns, please contact our customer support.</p>
+
+    <p>Best regards,<br>
+  </div>
+</body>
+
+</html>
