@@ -53,7 +53,9 @@ export const updateNotification = CatchAsyncError(
 );
 
 //delete notification --- only admin
-// cron.schedule("*/5 * * * * *" , () => {
-//   console.log("---------------------")
-//   console.log("Running Cron Job")
-// })
+cron.schedule("0 0 0 * * *" , async() => {
+  const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+
+  await notificationModel.deleteMany({status: "read", createdAt: {$lt: thirtyDaysAgo}});
+  console.log("Notifications older than 30 days and read deleted");
+})
