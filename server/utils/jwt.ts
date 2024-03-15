@@ -52,8 +52,8 @@ export const sendToken = (user: IUser, statusCode: number, res: Response) => {
   res.cookie("access_token", accessToken, accessTokenOptions);
   res.cookie("refresh_token", refreshToken, refreshTokenOptions);
 
-  console.log(new Date(accessTokenOptions.maxAge).toISOString().substr(11, 8));
-  console.log(`${Math.floor(refreshTokenOptions.maxAge / (1000 * 60 * 60 * 24))} days, ${new Date(refreshTokenOptions.maxAge).toISOString().substr(11, 8)}`);
+  // console.log(new Date(accessTokenOptions.maxAge).toISOString().substr(11, 8));
+  // console.log(`${Math.floor(refreshTokenOptions.maxAge / (1000 * 60 * 60 * 24))} days, ${new Date(refreshTokenOptions.maxAge).toISOString().substr(11, 8)}`);
 
   res.status(statusCode).json({
     success: true,
