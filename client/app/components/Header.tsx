@@ -25,7 +25,7 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
   }
 
   const handleClose = (e: any) => {
-    if(e.target.id === "screen"){
+    if (e.target.id === "screen") {
       setOpenSidebar(false);
     }
   };
@@ -62,12 +62,13 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
               </div>
               <HiOutlineUserCircle
                 size={25}
-                className="cursor-pointer dark:text-white text-black"
+                className="hidden 800px:block cursor-pointer dark:text-white text-black"
                 onClick={() => setOpen(true)}
               />
             </div>
           </div>
         </div>
+        
         {/* mobile sidebar */}
         {openSidebar && (
           <div
@@ -75,7 +76,19 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
             onClick={handleClose}
             id="screen"
           >
-           .w-[70%].fixed.z-[999999999].h-screen.bg-white.dark:bg-slate-900.dark:bg-opacity-90.top-0.right-0.right-0 
+            <div className="w-[70%] fixed z-[999999999] h-screen bg-white dark:bg-slate-900 dark:bg-opacity-90 top-0 right-0">
+              <NavItems activeItem={activeItem} isMobile={true} />
+              <HiOutlineUserCircle
+                size={25}
+                className="cursor-pointer ml-5 my-2 text-black dark:text-white"
+                onClick={() => setOpen(true)}
+              />
+              <br />
+              <br />
+              <p className="text-[16px] px-2 pl-5 text-black dark:text-white">
+                Copyright @ 2024 Mr. Bot Soln
+              </p>
+            </div>
           </div>
         )}
       </div>
