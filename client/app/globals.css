@@ -45,3 +45,7 @@ body {
     opacity: 0.4;
   }
 }
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
