@@ -1,9 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { BiSearch } from "react-icons/bi";
 
-const Hero: React.FC = () => {
+const Hero: React.FC = (props) => {
   return (
     <div className="w-[95%] 800px:w-[92%] m-auto py-10 dark:text-white text-black">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-center text-center md:text-left px-8">
@@ -19,9 +18,9 @@ const Hero: React.FC = () => {
               <input
                 type="text"
                 placeholder="Search courses..."
-                className="py-2 px-4 rounded-l-full focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600 bg-white text-black border border-gray-300 transition duration-300"
+                className="py-2 px-4 rounded-l-full focus:outline-none outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 bg-white text-black border border-gray-300 transition duration-300"
               />
-              <button className="bg-blue-500 hover:bg-blue-400 text-white py-2 px-4 rounded-r-full font-semibold text-base shadow-lg transition duration-300">
+              <button className="dark:bg-[#37a39a] dark:hover:bg-[#37a39a9e] bg-[black] hover:bg-[#00000035] text-white py-2 px-4 rounded-r-full font-semibold text-base shadow-lg transition duration-300">
                 <BiSearch />
               </button>
             </div>
